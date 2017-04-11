@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no">
+        <title>Webapp</title>
+        <link rel="stylesheet" type="text/css" href="css/index.css">
+    </head>
+    <body ng-app="app">
+      <div ui-view></div>
+
+
+
+      <script type="text/javascript">
+        // document.getElementsByTagName('html')[0].style.fontSize = window.screen.width / 10 + 'px';
+        ( function( win ) {
+          var doc = win.document;
+          var docEl = doc.documentElement;//获取文档元素
+          var tid;
+
+          function refreshRem() {
+              var width = docEl.getBoundingClientRect().width;//获取设备宽度
+              if ( width > 540 ) {
+                  width = 540;
+              }
+              var rem = width / 10;//设置rem为屏幕宽度的十分之一
+              docEl.style.fontSize = rem + 'px';
+          }
+          win.addEventListener('resize', function() {//屏幕宽度改变时
+              clearTimeout(tid);//清除之前的计时器
+              tid = setTimeout(refreshRem, 300);//300ms后改变rem大小
+          }, false);
+
+          win.addEventListener('pageshow', function( e ) {//页面显示时
+              if (e.persisted) {
+                  clearTimeout(tid);
+                  tid = setTimeout(refreshRem, 300);
+              }
+          }, false);
+          refreshRem();
+        })( window );
+      </script>
+      <script src="vendor/angular/angular.js" charset="utf-8"></script>
+      <script src="vendor/angular-ui-router/release/angular-ui-router.js"></script>
+      <script src="vendor/angular-cookies/angular-cookies.min.js" charset="utf-8"></script>
+      <script src="vendor/angular-validation/dist/angular-validation.min.js" charset="utf-8"></script>
+      <script src="js/index.js"></script>
+    </body>
+</html>

@@ -1,0 +1,42 @@
+.foot {
+  border-top: 1px solid @muteColor;
+  padding: 0;
+  margin: 0;
+  position: fixed;
+  bottom: 0;
+  height: 40px;
+  line-height: 40px;
+  left: 0;
+  right: 0;
+  font-size: 0;
+  li {
+    .fs(22);
+    width: 33.3333%;
+    color: @muteColor;
+    &.select{
+      background-color: @highlightBgColor;
+      color: @highlightColor;
+    }
+    span {
+      font-family: SimHei;
+    }
+  }
+  .icon-document {
+    background-image: url(../image/document.png);
+    .mr(4);
+    width: 25px;
+    height: 21px;
+  }
+  .icon-search {
+    background-image: url(../image/search.png);
+    .mr(4);
+    width: 24px;
+    height: 24px;
+  }
+  .icon-my {
+    background-image: url(../image/my.png);
+    .mr(4);
+    width: 23px;
+    height: 25px;
+  }
+}
